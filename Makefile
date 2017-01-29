@@ -52,5 +52,5 @@ $(ENTRY_OFILE): $(ENTRY_CFILE)
 clean:
 	rm -rf *.o *.elf *.bin
  
-write: 
-	./write_bin.sh openocd.cfg $(TARGET_ELF)
+install: 
+	st-flash write main.bin 0x08000000

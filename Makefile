@@ -25,13 +25,9 @@ FAMILY = STM32F10X_MD
 DEFINES = -D$(FAMILY)
 INCLUDES = -I ./Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/ -I ./Libraries/CMSIS/CM3/CoreSupport/ -I ./Libraries/STM32F10x_StdPeriph_Driver/inc
  
-CFLAGS  = -c -march=armv7-m -mcpu=cortex-m3 -mthumb \
-          -fno-common -nostdlib -fno-builtin -ffreestanding \
-          -Wall -O0 -g  \
-          --specs=nosys.specs \
-          $(DEFINES)
+CFLAGS = -c -march=armv7-m -mcpu=cortex-m3 -mthumb -fno-common -nostdlib -fno-builtin -ffreestanding -Wall -O0 $(DEFINES) -g
  
-LFLAGS  = -nostartfiles -T$(LKR_SCRIPT)
+LFLAGS = -nostartfiles -T$(LKR_SCRIPT)
 CPFLAGS = -Obinary
  
 .PHONY: all clean write
@@ -54,4 +50,4 @@ clean:
 	rm -rf *.o *.elf *.bin
  
 install: 
-	st-flash write main.bin 0x08000000
+	st-flash write $(TARGET_BIN) 0x08000000

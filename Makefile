@@ -28,6 +28,7 @@ INCLUDES = -I ./Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/ -I ./Libraries/C
 CFLAGS  = -c -march=armv7-m -mcpu=cortex-m3 -mthumb \
           -fno-common -nostdlib -fno-builtin -ffreestanding \
           -Wall -O0 -g  \
+          --specs=nosys.specs \
           $(DEFINES)
  
 LFLAGS  = -nostartfiles -T$(LKR_SCRIPT)
